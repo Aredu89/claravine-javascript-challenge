@@ -1,8 +1,10 @@
 // Function
 const findPair = (values = [], desired_sum) => {
+  const parsedDesiredNum = Number(desired_sum);
   if(
     !desired_sum ||
-    desired_sum < 1 ||
+    isNaN(desired_sum) ||
+    parsedDesiredNum < 1 ||
     values.length < 2
   ) {
     return null
@@ -40,7 +42,7 @@ const findPair = (values = [], desired_sum) => {
         break;
       };
       if(
-        (value1 + value2) === desired_sum
+        (value1 + value2) === parsedDesiredNum
       ) {
         if(value1 < value2) {
           foundPairs.push([value1, value2])
@@ -72,7 +74,7 @@ const findPair = (values = [], desired_sum) => {
 
 // Test
 const testValues = [1, '2', 3, 4, '5', '6', 7, 8, 9];
-const testDesiredSum = 4;
+const testDesiredSum = 5;
 
 const result = findPair(testValues, testDesiredSum);
 console.log('RESULT::: ', result);
