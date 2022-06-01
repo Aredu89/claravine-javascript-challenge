@@ -79,7 +79,7 @@ const testValues = [];
 for(var i = 1; i <= 100000; i++) {
   testValues.push(i);
 }
-const testDesiredSum = 2001;
+const testDesiredSum = 20001;
 
 console.log('---Function is called---');
 const result = findPair(testValues, testDesiredSum);
