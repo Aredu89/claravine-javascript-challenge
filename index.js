@@ -1,4 +1,4 @@
-// Function
+// ------ Function ------
 const findPair = (values = [], desired_sum) => {
   const parsedDesiredNum = Number(desired_sum);
   if(
@@ -32,22 +32,24 @@ const findPair = (values = [], desired_sum) => {
       validValues = false;
       break;
     };
-    for(let indx2 = indx1 + 1; indx2 < values.length; indx2 ++) {
-      const value2 = Number(values[indx2]);
-      if(
-        noValidValue(values[indx2]) ||
-        value1 === value2
-      ) {
-        validValues = false;
-        break;
-      };
-      if(
-        (value1 + value2) === parsedDesiredNum
-      ) {
-        if(value1 < value2) {
-          foundPairs.push([value1, value2])
-        } else {
-          foundPairs.push([value2, value1])
+    if(value1 < parsedDesiredNum) {
+      for(let indx2 = indx1 + 1; indx2 < values.length; indx2 ++) {
+        const value2 = Number(values[indx2]);
+        if(
+          noValidValue(values[indx2]) ||
+          value1 === value2
+        ) {
+          validValues = false;
+          break;
+        };
+        if(
+          (value1 + value2) === parsedDesiredNum
+        ) {
+          if(value1 < value2) {
+            foundPairs.push([value1, value2])
+          } else {
+            foundPairs.push([value2, value1])
+          }
         }
       }
     }
@@ -72,9 +74,13 @@ const findPair = (values = [], desired_sum) => {
   return finalPair;
 };
 
-// Test
-const testValues = [1, '2', 3, 4, '5', '6', 7, 8, 9];
-const testDesiredSum = 5;
+// ------ Test ------
+const testValues = [];
+for(var i = 1; i <= 100000; i++) {
+  testValues.push(i);
+}
+const testDesiredSum = 2001;
 
+console.log('---Function is called---');
 const result = findPair(testValues, testDesiredSum);
 console.log('RESULT::: ', result);
